@@ -1,0 +1,41 @@
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+int main() {
+    int guesses;
+  // This will generate a random number between 0 and 100.
+  srand(time(0));
+
+  int randomNum = rand() % 101;
+
+  // This will loop the data to make the game.
+  int userGuess;
+
+        cout << "Guess the number. \n";
+//Beginning of loop
+ do{
+        cin >> userGuess;
+if (userGuess == randomNum) {
+  cout << "Correct. The number is " << randomNum << ".";
+}
+
+if (userGuess > randomNum){
+    cout << "Incorrect. The number is lower than that. \n \n";
+guesses++;
+}
+if (userGuess < randomNum){
+    cout << "Incorrect. The number is higher than that. \n \n";
+guesses++;
+}
+  }
+  while (userGuess != randomNum);
+//End of loop
+
+//Below should count and display the number of guesses it took to get it right.
+
+  if (userGuess == randomNum){
+cout << " It took you " << guesses << " guesses to find the number.";
+  }
+  return 0;
+}
