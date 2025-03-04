@@ -1,10 +1,16 @@
 #include <iostream>
 #include <ctime>
+#include <limits>
 using namespace std;
 
 int main() {
     int guesses;
   // This will generate a random number between 0 and 100.
+  cout << "Note: There is a graphical error when entering a decimal value.\n";
+  cout << "I am working hard to figure out how to fix this.\n";
+  cout << "Other than that, it works fine. I will update the game when it is fixed.\n";
+  cout << "Thank you for your patience, and have fun. \n \n";
+
   srand(time(0));
 
   int randomNum = rand() % 101;
@@ -16,6 +22,7 @@ int main() {
 //Beginning of loop
  do{
         cin >> userGuess;
+        cout << "\n";
 if (userGuess == randomNum) {
   cout << "Correct. The number is " << randomNum << ".";
 }
@@ -24,11 +31,20 @@ if (userGuess > randomNum){
     cout << "Incorrect. The number is lower than that. \n \n";
 guesses++;
 }
+
 if (userGuess < randomNum){
     cout << "Incorrect. The number is higher than that. \n \n";
+
 guesses++;
 }
-  }
+
+if(cin.fail())
+{
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(),'\n');
+cout << "Invalid Input. Only use whole numbers.\n \n";
+}
+}
   while (userGuess != randomNum);
 //End of loop
 
@@ -36,6 +52,6 @@ guesses++;
 
   if (userGuess == randomNum){
 cout << " It took you " << guesses << " guesses to find the number.";
-  }
-  return 0;
+    }
+    return 0;
 }
